@@ -1,0 +1,90 @@
+{
+  "name": "dsh-multi-chat",
+  "version": "1.0.3-mavis.1",
+  "description": "DSH 多窗口墙：在官方 DeepSeek Harness Web 界面里以多窗口网格并排运行、监控多个对话实例，一屏盯住所有 Agent 的实时进度；内置带口令认证的局域网网关，手机/平板也能看。",
+  "license": "MIT",
+  "type": "module",
+  "main": "./lib/index.js",
+  "types": "./lib/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./lib/types/index.d.ts",
+      "default": "./lib/index.js"
+    },
+    "./client": {
+      "types": "./lib/types/client/index.d.ts",
+      "default": "./lib/client.js"
+    },
+    "./invariant": {
+      "types": "./lib/types/invariant.d.ts",
+      "default": "./lib/invariant.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "inject": [
+        "@deepseek-ai/dsh-client-locale",
+        "@deepseek-ai/dsh-client-ui-layout",
+        "@deepseek-ai/dsh-client-ui-sidebar",
+        "@deepseek-ai/dsh-client-ui-primitives"
+      ]
+    },
+    "marketplace": {
+      "profiles": [
+        "web"
+      ],
+      "requiresRestart": true,
+      "manualSteps": false,
+      "requiresBuildApproval": false
+    }
+  },
+  "bin": {
+    "dsh-multi-chat": "bin/dsh-multi-chat.mjs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daetz-coder/dsh-multi-chat.git"
+  },
+  "homepage": "https://github.com/daetz-coder/dsh-multi-chat#readme",
+  "bugs": {
+    "url": "https://github.com/daetz-coder/dsh-multi-chat/issues"
+  },
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "deepseek",
+    "multi-chat",
+    "multi-conversation",
+    "multi-window",
+    "multi-agent",
+    "client-plugin",
+    "gateway",
+    "phone-access"
+  ],
+  "files": [
+    "bin/",
+    "scripts/",
+    "patches/",
+    "assets/",
+    "lib/",
+    "src/",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1"
+  },
+  "scripts": {
+    "note": "prebuilt distribution - see PATCHES.md"
+  }
+}
